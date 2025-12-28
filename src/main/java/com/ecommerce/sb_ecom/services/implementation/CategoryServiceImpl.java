@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -29,7 +28,7 @@ public class CategoryServiceImpl implements CategoryService {
     public String deleteCategory(Long categoryId) {
 
         Category category = categories.stream().filter(cat-> cat.getCategoryId().equals(categoryId))
-                .findFirst().orElse(null);
+                .findFirst().orElse(null); // if the category not found for the id, category will be null
 
         if(category!=null){
             categories.remove(category);
